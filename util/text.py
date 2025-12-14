@@ -2,7 +2,7 @@ import streamlit as st
 import textwrap
 import google.generativeai as genai
 
-GOOGLE_API_KEY='AIzaSyCnx6R_y3535kNSuaLlXPZS0o0Q1WHdkA8'
+GOOGLE_API_KEY='AIzaSyDG_7A9rBymYPrxL-0tSwzDh97MgYfSauM'
 genai.configure(api_key=GOOGLE_API_KEY)
 
 def to_textt(text):
@@ -26,3 +26,4 @@ def showText():
             st.write(summary)
             status.update(label='Summarization complete!', state='complete', expanded=True)
             st.download_button('Save as a file',data=summary,file_name='txt_summarized.txt')
+
