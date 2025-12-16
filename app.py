@@ -153,14 +153,18 @@ def feedback():
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
-
 # Login page
 def login():
     st.subheader('Login')
+    email = st.text_input('Email')
+    password = st.text_input('Password', type='password')
   
 
     if st.button('Login'):
         try:
+            user = auth.get_user_by_email(email)
+            st.success('Login successful!')
+            st.session_state.user_email = email  # Set user_email in session state
             st.session_state.logged_in = True  # Update login status
         except auth.UserNotFoundError:
             st.error('Invalid email or password!')
@@ -201,3 +205,4 @@ elif nav == 'Feedback':
 # Call Home() only when user is logged in and not in 'Sign Up' or 'Feedback' page
 if st.session_state.logged_in and nav != 'Sign Up' and nav != 'Feedback':
     Home()
+
